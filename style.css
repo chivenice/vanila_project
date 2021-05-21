@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+    background-image: linear-gradient(120deg, #64c75a, #d88771 );
+    color: white;
+    font-family:'Popping', sans-serif;
+    min-height: 100vh;
+
+}
+
+header{
+    font: size 1.5em;
+}
+
+header,
+form{
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
