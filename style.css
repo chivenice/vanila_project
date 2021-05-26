@@ -44,3 +44,23 @@ form button:hover{
     background: #ee4d5f;
     color:wheat;
 }
+
+todo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+todo-list{
+    min-width: 30%;
+    list-style: none;
+}
+
+todo {
+    margin: 0.5rem;
+}
+iframe{
+    justify-content: center;
+
+}
