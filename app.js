@@ -5,6 +5,8 @@ const todoList = document.querySelector('.todo-list');
 
 //Event Listeners
 todoButton.addEventListener('click', addTodo);
+todoList.addEventListener('click', deleteCheck);
+
 
 //Functions
 
@@ -27,10 +29,24 @@ function addTodo(event) {
     //CHECK trash BUTTON
     const trashButton = document.createElement('button');
     trashButton.innerHTML = '<i class="fas fa-trash"></i>';
-    trashButton.classList.add("complete-btn");
+    trashButton.classList.add("trash-btn");
     todoDiv.appendChild(trashButton);
     //APPEND TO LIST
     todoList.appendChild(todoDiv);
     //Clear Todo INPUT VALUE
     todoInput.value = "";
     }
+
+    function deleteCheck(e){
+      const item = e.target;
+      //DELETE TODO
+      if (item.classList[0] === "trash-btn") {
+          const todo = item.parentElement;
+         todo.remove(); 
+      }
+      //CHECK MARK
+      if (item.classList[0] === "complete-btn") {
+          const todo = item.parentElement;
+          todo.classList.toggle("completed");
+      }
+      }
