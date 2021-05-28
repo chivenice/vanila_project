@@ -35,18 +35,31 @@ function addTodo(event) {
     todoList.appendChild(todoDiv);
     //Clear Todo INPUT VALUE
     todoInput.value = "";
-    }
+}
 
-    function deleteCheck(e){
-      const item = e.target;
-      //DELETE TODO
-      if (item.classList[0] === "trash-btn") {
-          const todo = item.parentElement;
-         todo.remove(); 
-      }
-      //CHECK MARK
-      if (item.classList[0] === "complete-btn") {
-          const todo = item.parentElement;
-          todo.classList.toggle("completed");
-      }
-      }
+function deleteCheck(e) {
+    const item = e.target;
+    //DELETE TODO
+    if (item.classList[0] === "trash-btn") {
+        const todo = item.parentElement;
+        //Animation
+        todo.classList.add("fall");
+        todo.addEventListener('transitionend', function(){
+            todo.remove();
+        });
+    }
+    //CHECK MARK
+    if (item.classList[0] === "complete-btn") {
+        const todo = item.parentElement;
+        todo.classList.toggle('completed');
+    }
+}
+
+    //Uploading Audio
+    function handleFiles(event) {
+        var files = event.target.files;
+        $("#src").attr("src", URL.createObjectURL(files[0]));
+        document.getElementById("audio").load();
+    }
+    
+    document.getElementById("upload").addEventListener("change", handleFiles, false);
