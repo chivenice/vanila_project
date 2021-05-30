@@ -25,6 +25,13 @@
         <button class="todo-button" type="submit">
             <i class="fas fa-plus-square"></i>
         </button>
+        <div class="select">
+        <select name="todos" class="filter-todo">
+            <option value="all">All</option>
+            <option value="Completed">Completed</option>
+            <option value="Uncompleted">Uncompleted</option>
+        </select>
+        </div>
     </form>
 
     <div class="todo-container">
@@ -33,6 +40,13 @@
 
 
     <script src="./app.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <input type="file" id="upload" />
+    <audio id="audio" controls>
+        <source src="" id="src" />
+    </audio>
+    
 </body>
 <footer>
     <iframe src="https://open.spotify.com/embed/playlist/70mvv4JINCyN53Tlx2s7Re" width="300" height="380"
