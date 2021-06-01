@@ -46,7 +46,7 @@ function deleteCheck(e) {
         const todo = item.parentElement;
         //Animation
         todo.classList.add("fall");
-        todo.addEventListener('transitionend', function(){
+        todo.addEventListener('transitionend', function () {
             todo.remove();
         });
     }
@@ -56,33 +56,34 @@ function deleteCheck(e) {
         todo.classList.toggle('completed');
     }
 }
-    function filterTodo(e){
-         const todos =todoList.childNodes;
-         todos.forEach(function(todo) {
-             switch (e.target.value) {
-                 case "all":
-                     todo.style.display = "flex";
-                     break;
-                 case "completed":
-                     if (todo.classList.contains("completed"))  {
-                         todo.style.display = "flex";
-                     } else {
-                        todo.style.display = "none";
-                     }
-                 case "uncompleted":
-                    if (todo.classList.contains("uncompleted"))  {
-                        todo.style.display = "flex";
-                    } else {
-                       todo.style.display = "none";
+function filterTodo(e) {
+    const todos = todoList.childNodes;
+    todos.forEach(function (todo) {
+        switch (e.target.value) {
+            case "all":
+                todo.style.display = "flex";
+                break;
+            case "completed":
+                if (todo.classList.contains("completed")) {
+                    todo.style.display = "flex";
+                } else {
+                    todo.style.display = "none";
+                }
+            case "uncompleted":
+                if (!todo.classList.contains("uncompleted")) {
+                    todo.style.display = "flex";
+                } else {
+                    todo.style.display = "none";
+                }
 
-            }
-         });
-    }
+        }
+    });
+}
     //Uploading Audio
     function handleFiles(event) {
         var files = event.target.files;
         $("#src").attr("src", URL.createObjectURL(files[0]));
         document.getElementById("audio").load();
     }
-    
+
     document.getElementById("upload").addEventListener("change", handleFiles, false);
