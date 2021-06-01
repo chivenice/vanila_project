@@ -56,25 +56,28 @@ function deleteCheck(e) {
         todo.classList.toggle('completed');
     }
 }
+
 function filterTodo(e) {
     const todos = todoList.childNodes;
     todos.forEach(function (todo) {
         switch (e.target.value) {
             case "all":
                 todo.style.display = "flex";
-                break;
+             break;
             case "completed":
-                if (todo.classList.contains("completed")) {
+                if (todo.classList.contains('completed')) {
                     todo.style.display = "flex";
                 } else {
                     todo.style.display = "none";
                 }
+                break;
             case "uncompleted":
-                if (!todo.classList.contains("uncompleted")) {
+                if (!todo.classList.contains('completed')) {
                     todo.style.display = "flex";
                 } else {
                     todo.style.display = "none";
                 }
+                break;
 
         }
     });
@@ -86,4 +89,3 @@ function filterTodo(e) {
         document.getElementById("audio").load();
     }
 
-    document.getElementById("upload").addEventListener("change", handleFiles, false);
