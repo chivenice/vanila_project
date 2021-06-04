@@ -5,6 +5,7 @@ const todoList = document.querySelector('.todo-list');
 const filterOption = document.querySelector('.filter-todo');
 
 //Event Listeners
+document.addEventListener("DOMContentLoaded", getTodos);
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
 filterOption.addEventListener('click', filterTodo);
@@ -66,7 +67,7 @@ function filterTodo(e) {
         switch (e.target.value) {
             case "all":
                 todo.style.display = "flex";
-             break;
+                break;
             case "completed":
                 if (todo.classList.contains('completed')) {
                     todo.style.display = "flex";
@@ -88,22 +89,57 @@ function filterTodo(e) {
 
 
 
-function saveLocalTodos(todo){
+function saveLocalTodos(todo) {
     //CHECK--Do I already have thing in there?
     let todos;
-     if(localStorage.getItem('todos') === null){
-         todos = [];
-     } else {
-         todos = JSON.parse(localStorage.getItem('todos'));
-     }
-     todos.push(todo);
-     localStorage.setItem('todos', JSON.stringify(todos));
+    if (localStorage.getItem('todos') === null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem('todos'));
+    }
+    todos.push(todo);
+    localStorage.setItem('todos', JSON.stringify(todos));
 }
 
-    //Uploading Audio
-    function handleFiles(event) {
-        var files = event.target.files;
-        $("#src").attr("src", URL.createObjectURL(files[0]));
-        document.getElementById("audio").load();
+function getTodos(todo) {
+    console.log = ("hello");
+    //CHECK--Do I already have thing in there?
+    let todos;
+    if (localStorage.getItem("todos") === null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem("todos"));
     }
+    todos.forEach(function (todo) {
+        //Todo DIV
+        const todoDiv = document.createElement("div");
+        todoDiv.classList.add("todo");
+        //Create LI
+        const newTodo = document.createElement('li');
+        newTodo.innerText = todo;
+        newTodo.classList.add('todo-item');
+        todoDiv.appendChild(newTodo);
+
+
+        //CHECK MARK BUTTON
+        const completedButton = document.createElement('button');
+        completedButton.innerHTML = '<i class="fas fa-check"></i>';
+        completedButton.classList.add("complete-btn");
+        todoDiv.appendChild(completedButton);
+        //CHECK trash BUTTON
+        const trashButton = document.createElement('button');
+        trashButton.innerHTML = '<i class="fas fa-trash"></i>';
+        trashButton.classList.add("trash-btn");
+        todoDiv.appendChild(trashButton);
+        //APPEND TO LIST
+        todoList.appendChild(todoDiv);
+    }
+    )}
+
+//Uploading Audio
+function handleFiles(event) {
+    var files = event.target.files;
+    $("#src").attr("src", URL.createObjectURL(files[0]));
+    document.getElementById("audio").load();
+}
 
